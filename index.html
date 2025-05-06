@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bilderkennung mit ml5</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://unpkg.com/ml5@1/dist/ml5.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+</head>
+<body>
+  <h1>Bilderkennung mit ml5</h1>
+
+  <div class="container">
+
+    <h2>Korrekte Klassifikation</h2>
+    <div class="sample-set" id="correct-classifications">
+      <!-- Filled via JS -->
+    </div>
+
+    <h2>Falsche Klassifikation</h2>
+    <div class="sample-set" id="incorrect-classifications">
+      <!-- Filled via JS -->
+    </div>
+
+    <h2>Eigene Bilder hochladen</h2>
+    <div class="upload-area" id="drop-area">
+      <p>Bild hierher ziehen ODER zum Hochladen auswählen</p>
+      <input type="file" id="file-input" accept="image/*" style="display: none;">
+    </div>
+
+    <div class="user-section" id="user-output" style="display: none;">
+      <div class="image-column">
+        <img id="user-image" src="#" alt="User Uploaded" style="width: 400px; height: 400px;" crossorigin="anonymous">
+        <button id="classify-button">Classify</button>
+      </div>
+      <div class="classification-column">
+        <canvas id="result-chart"></canvas>
+      </div>
+    </div>
+
+    <h2>Diskussion</h2>
+    <p>
+      Die Ergebnisse zeigen, dass MobileNet in der Lage ist, bestimmte Objekte zuverlässig zu klassifizieren, während es bei anderen Objekten Schwierigkeiten aufweist.
+
+      Positiv hervorzuheben ist die korrekte Klassifikation von Bildern wie einer Orange, einem Braunbären und einer Tabby-Katze. Diese Objekte wurden vom Modell präzise erkannt, was auf eine gute Repräsentation dieser Klassen in den Trainingsdaten und auf die Fähigkeit des Modells zur Erkennung klarer visueller Merkmale schließen lässt.
+      
+      Auf der anderen Seite kam es bei einigen Bildern zu Fehlklassifikationen. So wurde beispielsweise ein Bild von Barack Obama fälschlicherweise als "Face powder" erkannt. Diese Verwechslung deutet darauf hin, dass das Modell Gesichtserkennung nur begrenzt beherrscht und möglicherweise Schwierigkeiten hat, zwischen prominenten Personen und kosmetischen Produkten zu unterscheiden – insbesondere, wenn ähnliche Farb- oder Texturmerkmale vorhanden sind. Auch die Klassifikation eines Apfels als "Pomegranate" sowie eines Würfels als "Balloon" zeigt, dass das Modell bei Objekten mit ähnlicher Form oder Farbe, aber unterschiedlicher Bedeutung, an seine Grenzen stößt.
+      
+      Diese Ergebnisse verdeutlichen, dass MobileNet trotz seiner Effizienz und guten Leistung bei gängigen Objekten nicht frei von Fehlern ist. Insbesondere bei weniger eindeutig dargestellten oder ungewöhnlichen Motiven kann es zu Fehlklassifikationen kommen. Eine mögliche Verbesserung könnte durch eine Feinabstimmung (Fine-Tuning) des Modells mit domänenspezifischen Daten erzielt werden, um die Genauigkeit für bestimmte Anwendungsfälle weiter zu steigern.
+    </p>
+
+    <h2>Dokumentation</h2>
+    <h3>Technisch</h3>
+    <p> Für die Umsetzung werden folgende zwei Frameworks verwendet:</p>
+
+    <ul>
+      <li><strong>ml5.js</strong> – Die Klassifikation erfolgt mit ml5.js, einer benutzerfreundlichen JavaScript-Bibliothek, die auf TensorFlow.js basiert. Sie ermöglicht die Nutzung des vortrainierten MobileNet-Modells direkt im Browser. Die Bilderkennung geschieht lokal und in Echtzeit, ohne Serververbindung, was schnelle Ergebnisse und Datenschutzvorteile bietet.</li>
+      <li><strong>Chart.js</strong> – Die Klassifikationsergebnisse werden mit Chart.js visualisiert. Diese leichtgewichtige JavaScript-Bibliothek stellt die Konfidenzwerte übersichtlich als Balkendiagramm dar. So werden die Resultate verständlich und nachvollziehbar präsentiert.</li>
+
+    </ul>
+
+    <p>Der Upload von Bildern ist sowohl per Drag-and-Drop als auch über einen klassischen Datei-Upload möglich. Die Benutzeroberfläche folgt Grundprinzipien der Gebrauchstauglichkeit nach ISO 9241, z. B. durch Aufgabenangemessenheit, visuelles Feedback, klare Layoutstruktur und eine einfache Bedienlogik.</p>
+
+    <h3>Fachlich</h3>
+    <p>
+      In dieser Arbeit wurde eine clientseitige Web-Anwendung zur Bilderkennung mit einem vortrainierten Modell (MobileNet) aus der Bibliothek ml5.js entwickelt. Ziel war es, eine interaktive Lösung zu schaffen, mit der sowohl vorgegebene Beispielbilder als auch benutzerdefinierte Bilder klassifiziert und die Ergebnisse verständlich visualisiert werden können.
+      Die Anwendung wurde um eine Beispielgalerie erweitert, die drei korrekt und drei falsch klassifizierte Bilder mit ihren jeweiligen Diagrammen zeigt. 
+      Diese Beispiele verdeutlichen die Stärken und Schwächen des Modells: Objekte mit klaren, typischen Merkmalen (z. B. Orange oder Tabby-Katze) wurden richtig erkannt, während es bei uneindeutigen, komplexen oder ähnlichen Objekten (z. B. Apfel als Granatapfel) zu Fehlklassifikationen kam.
+      Die Web-Anwendung erfüllt die Anforderungen der Aufgabenstellung durch vollständige Funktionalität, interaktive Bedienung und eine verständliche Ergebnisdarstellung. Sie bietet einen guten Einstieg in die Nutzung vortrainierter Deep-Learning-Modelle in modernen Webumgebungen.
+    </p>
+
+  </div>
+  <script src="js/script.js"></script>
+</body>
+</html>

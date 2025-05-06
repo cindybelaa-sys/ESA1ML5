@@ -1,0 +1,109 @@
+
+    :root {
+      --primary-color: #1976d2;
+      --secondary-color: #e3f2fd;
+      --success-color: #66bb6a;
+      --error-color: #ef5350;
+      --font-family: 'Segoe UI', Roboto, sans-serif;
+    }
+  
+    body {
+      font-family: var(--font-family);
+      margin: 40px;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+  
+    h1, h2 {
+      color: var(--primary-color);
+    }
+  
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+  
+    .sample-set {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+  
+    .user-section {
+      display: flex;
+      flex-direction: row;
+      gap: 30px;
+      align-items: flex-start;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+  
+    .image-column img {
+      width: 400px;
+      height: 400px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+  
+    .classification-column {
+      flex: 1;
+      min-width: 300px;
+    }
+  
+    canvas {
+      max-width: 100%;
+    }
+  
+    .upload-area {
+      border: 2px dashed #bbb;
+      padding: 25px;
+      text-align: center;
+      border-radius: 10px;
+      background-color: var(--secondary-color);
+      cursor: pointer;
+      transition: border-color 0.3s ease, background-color 0.3s ease;
+    }
+  
+    .upload-area:hover {
+      background-color: #bbdefb;
+      border-color: var(--primary-color);
+    }
+  
+    #classify-button {
+      margin-top: 10px;
+      padding: 10px 18px;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+  
+    #classify-button:hover {
+      background-color: #1565c0;
+    }
+  
+    .highlight {
+      color: var(--success-color);
+      font-weight: bold;
+    }
+  
+    .low-confidence {
+      color: var(--error-color);
+      font-style: italic;
+    }
+  
+    @media (max-width: 768px) {
+      .user-section {
+        flex-direction: column;
+      }
+  
+      .classification-column {
+        width: 100%;
+      }
+    }
